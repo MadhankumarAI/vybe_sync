@@ -27,7 +27,7 @@ const App = () => {
     if (!image) return;
 
     try {
-      const response = await fetch('https://ec20-2401-4900-61b3-9c34-412e-3b80-b926-274.ngrok-free.app/detect_emotion', {
+      const response = await fetch('/detect_emotion', {
 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -128,7 +128,7 @@ const App = () => {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer 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`,
+          'Authorization': `Bearer your token`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -155,7 +155,7 @@ const App = () => {
   const fetchYoutubeVideos = async (emotion) => {
     const query = `yoga for ${emotion} mood`;
     try {
-      const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=2&key=AIzaSyCLUVTYUchn5wqR6wXT3pmOXb53MJov4kA`);
+      const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=2&key=token`);
       const json = await res.json();
       const videos = json.items.map(item => `https://www.youtube.com/watch?v=${item.id.videoId}`);
       setYoutubeVideos(videos);
